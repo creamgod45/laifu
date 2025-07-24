@@ -1,10 +1,9 @@
-@import gg.jte.runtime.Template
 @import gg.jte.Content
 @param String title
 @param Content content
 
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
     <title>${title}</title>
 </head>
