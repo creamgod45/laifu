@@ -53,6 +53,7 @@ dependencies {
         developmentOnly("org.springframework.boot:spring-boot-devtools")
         developmentOnly("org.springframework.boot:spring-boot-docker-compose")
         runtimeOnly("com.mysql:mysql-connector-j")
+        runtimeOnly("org.xerial:sqlite-jdbc")
         developmentOnly("org.springframework.ai:spring-ai-spring-boot-docker-compose")
         implementation("me.friwi:jcefmaven:135.0.20")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
