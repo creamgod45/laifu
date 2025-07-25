@@ -3,4 +3,5 @@
 
 ## Desktop WebView
 Run `FuDesktopApp` to start the server with an embedded JCEF browser.
-Window creation and shutdown handling is provided by `GuiManager`.
+`GuiManager` hosts a list of `CGComponent` instances and manages their
+lifecycle so new components can easily plug into the Swing window.

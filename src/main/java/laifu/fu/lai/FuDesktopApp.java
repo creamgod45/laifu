@@ -8,6 +8,7 @@ import org.cef.CefApp;
 import org.cef.CefClient;
 import org.cef.browser.CefBrowser;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -46,6 +47,7 @@ public class FuDesktopApp {
         CefClient client = cefApp.createClient();
         CefBrowser browser = client.createBrowser("http://localhost:8080", false, false);
 
-        new GuiManager().showBrowser(browser);
+        GuiManager guiManager = new GuiManager();
+        guiManager.register(new BrowserComponent(browser)).show();
     }
 }
