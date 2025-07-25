@@ -1,5 +1,6 @@
-package laifu.fu.lai;
+package laifu.fu.lai.gui;
 
+import laifu.fu.lai.component.CGComponent;
 import org.cef.CefApp;
 
 import javax.swing.*;
@@ -27,7 +28,8 @@ public class GuiManager {
     /** Display the window and enable all registered components. */
     public void show() {
         frame = new JFrame("Fu Desktop App");
-        frame.setSize(1024, 768);
+        frame.setMinimumSize(new Dimension(1366, 738));    // 设置最小窗口大小
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);    // 默认窗口全屏
         frame.setLocationRelativeTo(null);
 
         for (CGComponent handler : handlers) {
@@ -58,6 +60,8 @@ public class GuiManager {
             }
         });
 
+        frame.pack();
+        frame.setSize(1366, 738);
         frame.setVisible(true);
     }
 

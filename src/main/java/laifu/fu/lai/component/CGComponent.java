@@ -1,4 +1,7 @@
-package laifu.fu.lai;
+package laifu.fu.lai.component;
+
+import laifu.fu.lai.event.CGEventBus;
+import laifu.fu.lai.gui.GuiManager;
 
 import javax.swing.*;
 import java.awt.*;

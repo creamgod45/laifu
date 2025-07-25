@@ -1,4 +1,4 @@
-package laifu.fu.lai;
+package laifu.fu.lai.event;
 
 import java.util.List;
 import java.util.Map;

@@ -1,5 +1,6 @@
-package laifu.fu.lai;
+package laifu.fu.lai.component;
 
+import laifu.fu.lai.event.CGEventBus;
 import org.cef.browser.CefBrowser;
 
 import javax.swing.*;

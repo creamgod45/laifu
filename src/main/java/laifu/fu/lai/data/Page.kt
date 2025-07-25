@@ -1,4 +1,4 @@
-package laifu.fu.lai
+package laifu.fu.lai.data
 
 public data class Page(
     public val title: String,

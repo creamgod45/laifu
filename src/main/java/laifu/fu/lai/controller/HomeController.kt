@@ -1,14 +1,23 @@
 package laifu.fu.lai.controller
 
-import laifu.fu.lai.Page
+import laifu.fu.lai.data.Page
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ResponseBody
+import java.io.File
 
 
 @Controller
 class HomeController {
-    @GetMapping("/test")
+
+    @ResponseBody
+    @GetMapping("/output.css")
+    fun outputCss(): String {
+        return File("src/main/jte/output.css").readText()
+    }
+
+    @GetMapping("/")
     fun index(model: Model): String {
         val page = Page(
             title = "JTE 測試",
