@@ -3,3 +3,4 @@
 
 ## Desktop WebView
 Run `FuDesktopApp` to start the server with an embedded JCEF browser.
+Window creation and shutdown handling is provided by `GuiManager`.
