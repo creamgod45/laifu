@@ -11,6 +11,7 @@ import java.awt.*;
  */
 public class BrowserComponent implements CGComponent {
     private final CefBrowser browser;
+    private final CGEventBus eventBus = new CGEventBus();
     private Status status = Status.DISABLED;
 
     public BrowserComponent(CefBrowser browser) {
@@ -46,5 +47,10 @@ public class BrowserComponent implements CGComponent {
     @Override
     public Status getStatus() {
         return status;
+    }
+
+    @Override
+    public CGEventBus getEventBus() {
+        return eventBus;
     }
 }

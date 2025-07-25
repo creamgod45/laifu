@@ -2,6 +2,7 @@ package laifu.fu.lai;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.function.Consumer;
 
 /**
  * A component with a simple service life cycle that can be managed by
@@ -24,8 +25,24 @@ public interface CGComponent {
     /** Called when an error occurred during a lifecycle phase. */
     void onError(Throwable throwable);
 
-    /** Generic event hook. */
-    default void on(String event, Object... args) {}
+    /**
+     * @return the event bus that manages listeners for this component
+     */
+    CGEventBus getEventBus();
+
+    /**
+     * Register a listener for the given event name.
+     */
+    default void on(String event, Consumer<Object[]> listener) {
+        getEventBus().on(event, listener);
+    }
+
+    /**
+     * Trigger an event with optional arguments.
+     */
+    default void trigger(String event, Object... args) {
+        getEventBus().trigger(event, args);
+    }
 
     /**
      * @return the Swing component to add to the frame, or {@code null} if none
