@@ -1,7 +1,9 @@
 package laifu.fu.lai.gui;
 
+import laifu.fu.lai.FuApplication;
 import laifu.fu.lai.component.BrowserComponent;
 import laifu.fu.lai.handler.DownloadHandler;
+import laifu.fu.lai.handler.MenuHandler;
 import laifu.fu.lai.handler.MessageRouterHandler;
 import laifu.fu.lai.services.CoreService;
 import me.friwi.jcefmaven.CefAppBuilder;
@@ -15,6 +17,8 @@ import org.cef.browser.CefBrowser;
 import org.cef.browser.CefMessageRouter;
 import org.cef.handler.CefFocusHandlerAdapter;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.boot.web.context.WebServerInitializedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
@@ -28,10 +32,16 @@ public class UI implements InitializingBean
     private CefApp cefApp_;
     private boolean browserFocus_;
 
-
     public UI(CoreService myService) {
         this.myService = myService;
     }
+
+
+    @EventListener
+    public void onWebServerReady(WebServerInitializedEvent event) {
+        init();
+    }
+
 
     private void init() {
         EventQueue.invokeLater(() -> {
@@ -56,6 +66,8 @@ public class UI implements InitializingBean
                 throw new RuntimeException(e);
             }
             CefClient client = cefApp_.createClient();
+
+            client.addContextMenuHandler(new MenuHandler());
             // 绑定 MessageRouter 使前端可以执行 js 到 java 中
             CefMessageRouter cmr = CefMessageRouter.create(new CefMessageRouter.CefMessageRouterConfig());
             cmr.addHandler(new MessageRouterHandler(myService), true);
@@ -77,7 +89,8 @@ public class UI implements InitializingBean
                     browserFocus_ = false;
                 }
             });
-            CefBrowser browser_ = client.createBrowser("http://localhost:59815", false, false);
+
+            CefBrowser browser_ = client.createBrowser("http://localhost:"+ FuApplication.getPort(), false, false);
 
             GuiManager guiManager = new GuiManager();
             guiManager.register(new BrowserComponent(browser_));
@@ -88,6 +101,5 @@ public class UI implements InitializingBean
     @Override
     public void afterPropertiesSet()
     {
-        init();
     }
 }

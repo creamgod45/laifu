@@ -1,7 +1,9 @@
 package laifu.fu.lai.data
 
-public data class Page(
-    public val title: String,
-    public val user: String,
-    public val description: String,
+data class Page(
+    val title: String,
+    val user: String,
+    val description: String,
+    val authed: Boolean = false,
+    val content: String = ""
 )
