@@ -18,7 +18,7 @@
     <div id="menu-dropdown" style="display: none;" class="dropdown z-10 origin-top-right absolute right-0 mt-2 min-w-[160px] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
         <div class="py-1 menuitem-panel" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton">
             <button class="w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-600 hover:text-white" role="menuitem">設定</button>
-            <button class="w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-600 hover:text-white" role="menuitem">離開</button>
+            <a class="w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-600 hover:text-white" href="/app/shutdown" role="menuitem">離開</a>
             <hr>
             @if(authed)
                 <button class="w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-600 hover:text-white" role="menuitem">登出</button>

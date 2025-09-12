@@ -187,8 +187,38 @@
   .z-10 {
     z-index: 10;
   }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
   .mt-2 {
     margin-top: calc(var(--spacing, 0.25rem) * 2);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing, 0.25rem) * 8);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing, 0.25rem) * 2);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing, 0.25rem) * 4);
   }
   .flex {
     display: flex;
@@ -298,11 +328,21 @@
   .gap-8 {
     gap: calc(var(--spacing, 0.25rem) * 8);
   }
+  .space-y-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing, 0.25rem) * 4) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing, 0.25rem) * 4) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
   .overflow-hidden {
     overflow: hidden;
   }
   .overflow-x-hidden {
     overflow-x: hidden;
+  }
+  .rounded {
+    border-radius: 0.25rem;
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
@@ -340,6 +380,30 @@
   .bg-\[\#121417\] {
     background-color: #121417;
   }
+  .bg-blue-500 {
+    background-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+  }
+  .bg-gray-50 {
+    background-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
+  }
+  .bg-gray-100 {
+    background-color: var(--color-gray-100, oklch(96.7% 0.003 264.542));
+  }
+  .bg-green-100 {
+    background-color: var(--color-green-100, oklch(96.2% 0.044 156.743));
+  }
+  .bg-green-500 {
+    background-color: var(--color-green-500, oklch(72.3% 0.219 149.579));
+  }
+  .bg-purple-500 {
+    background-color: var(--color-purple-500, oklch(62.7% 0.265 303.9));
+  }
+  .bg-red-100 {
+    background-color: var(--color-red-100, oklch(93.6% 0.032 17.717));
+  }
+  .bg-red-500 {
+    background-color: var(--color-red-500, oklch(63.7% 0.237 25.331));
+  }
   .bg-white {
     background-color: var(--color-white, #fff);
   }
@@ -351,6 +415,9 @@
   }
   .bg-no-repeat {
     background-repeat: no-repeat;
+  }
+  .p-2 {
+    padding: calc(var(--spacing, 0.25rem) * 2);
   }
   .p-4 {
     padding: calc(var(--spacing, 0.25rem) * 4);
@@ -382,6 +449,10 @@
   .text-left {
     text-align: left;
   }
+  .text-2xl {
+    font-size: var(--text-2xl, 1.5rem);
+    line-height: var(--tw-leading, var(--text-2xl--line-height, calc(2 / 1.5)));
+  }
   .text-base {
     font-size: var(--text-base, 1rem);
     line-height: var(--tw-leading, var(--text-base--line-height, calc(1.5 / 1)));
@@ -408,6 +479,10 @@
   .font-bold {
     --tw-font-weight: var(--font-weight-bold, 700);
     font-weight: var(--font-weight-bold, 700);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold, 600);
+    font-weight: var(--font-weight-semibold, 600);
   }
   .tracking-\[-0\.015em\] {
     --tw-tracking: -0.015em;
@@ -446,10 +521,38 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
     transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
   }
+  .hover\:bg-blue-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-600, oklch(54.6% 0.245 262.881));
+      }
+    }
+  }
+  .hover\:bg-green-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+      }
+    }
+  }
   .hover\:bg-neutral-600 {
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-neutral-600, oklch(43.9% 0 0));
+      }
+    }
+  }
+  .hover\:bg-purple-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-purple-600, oklch(55.8% 0.288 302.321));
+      }
+    }
+  }
+  .hover\:bg-red-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
       }
     }
   }
@@ -1260,6 +1363,11 @@ a.btn {
   syntax: "*";
   inherits: false;
 }
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -1446,6 +1554,7 @@ a.btn {
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
       --tw-border-style: solid;
       --tw-leading: initial;
       --tw-font-weight: initial;
